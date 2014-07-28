@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Html5 localStorage</title>
+</head>
+<body>
+
+<script src="../js/jquery.js"></script>
+<script>
+	var localStorage = window.localStorage;
+
+	localStorage.a = 3;
+	var a = localStorage.a;
+	document.write('a: ' + a);
+	localStorage.setItem('b', 4);//另外一种设置方式
+	var b = localStorage.getItem('b');//另外一种取值方式
+	document.write('b: ' + b);
+	//清楚
+	//localStorage.removeItem('b');//移除b
+	$.each(localStorage, function(key, value) {
+		document.write(key + ': ' + value + '<br>');
+	});
+
+	//本地数据库操作
+
+	var dataBase = window.openDatabase("student", "1.0", "学生表", 1024 * 1024, function () { });
+
+	if (!dataBase) {
+		document.write("数据库创建失败！");
+	} else {
+		document.write("数据库创建成功！");
+	}
+
+	//********************************
+	//****Html5 管理本地数据库脚本****
+	//********************************
+	var LOCAL = window.LOCAL || {}, win = window;
+
+	LOCAL.LocalDB = function(options){
+		this.opts = $.extend({}, LOCAL.defaults, options);
+	}
+	LOCAL.LocalDB.prototype = {
+		//打开数据库
+		openDB: function() {
+			var self = this, options = self.opts;
+			try{
+				if(!options.dbObj) {
+					options.dbObj = win.openDatabase(options.dbName, options.dbVersion,
+												options.dbDescription, options.dbMaxSize);
+					console.log(options.dbName + '数据库创建成功...');
+				}
+			}catch(e){
+				console.log("打开数据库出现未知错误： " + e);
+            	options.dbObj = null;
+			};
+		},
+		//连接数据库
+		getDBConn: function() {
+			this.openDB();
+		},
+		//默认执行sql方式
+		executeSqlDefault: function(sqlStr, params, successHandler, errorHandler) {
+			var self = this, options = self.opts;
+			this.getDBConn();
+			options.dbObj.transaction(function(tx){
+				tx.executeSql(sqlStr, params, successHandler, errorHandler);
+			}, null, null);
+
+		},
+		//自定义sql函数执行
+		executeSqlTrans: function(fun, successHandler, errorHandler) {
+			var self = this, options = self.opts;
+			this.getDBConn();
+			options.dbObj.transaction(fun, successHandler, errorHandler);
+		},
+		//修改数据库版本信息
+		changeDBVersion: function(newVersion) {
+			var self = this, options = self.opts;
+			this.getDBConn();
+			options.dbObj.changeVersion(options.dbVersion, newVersion, null, errorFun, null);
+		},
+		//判断某表是否存在：表名、存在回调函数、不存在回调函数
+		isExitTable: function(tableName, exitFun, notExitFun) {
+			var self = this, options = self.opts,
+				sql = "select * from sqlite_master where type='table' and name = ?";
+			this.getDBConn();
+			options.dbObj.transaction(function(tx) {
+				tx.executeSql(sql, [tableName], function(transaction, result) {
+					if (result.rows.length > 0 && exitFun) {
+	                    exitFun.call();
+	                } else if (result.rows.length <= 0 && notExitFun) {
+	                    notExitFun.call();
+	                }
+				}, null);
+			});
+		},
+		 //删除表数据：表名，删除成功回调函数
+		 delTableData: function(tableName, callBackFun) {
+		 	var self = this, options = self.opts,
+		 		sql = 'delete form ?'
+			this.getDBConn();
+			options.dbObj.transaction(function(tx) {
+				tx.executeSql(sql, [tableName], callBackFun, null);
+			});
+		 },
+		 //删除表，删除成功回调函数
+		 dropTable: function(tableName, callBackFun) {
+		 	var self = this, options = self.opts,
+		 		sql = 'drop table ?'
+			this.getDBConn();
+			options.dbObj.transaction(function(tx) {
+				tx.executeSql(sql, [tableName], callBackFun, null);
+			});
+		 }
+	};
+	LOCAL.defaults = {
+		dbName: 'book',//数据库名
+		dbVersion: '1.0',//版本信息
+		dbDescription: 'just test',//描述
+		dbMaxSize: 1024*1024*1024,//最大值
+		dbObj: null
+	}
+	var localDB = new LOCAL.LocalDB();
+	localDB.openDB();
+
+
+
+	var cSql = 'create table if not exists book1 (id REAL UNIQUE, name TEXT)';
+	localDB.executeSqlDefault(cSql, [],function() {console.log('success')}, function() {console.log('error')});
+	var addSql = 'insert into book1 (id, name) values(? ,?)', params = [1, '天龙八部'];
+	localDB.executeSqlDefault(addSql, params,function() {console.log('success')}, function() {console.log('error')});
+	localDB.executeSqlDefault(
+		'select * from book1',
+		[],
+		function(tx, result) {
+			console.log(tx+' '+result)
+		},
+		function() {console.log('error')}
+	);
+</script>
+</body>
+</html>

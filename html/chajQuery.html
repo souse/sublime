@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>chajQuery</title>
+	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../js/chajquery.js"></script>
+	<script>
+		var result=$.extend( false,  {},  
+    					{ name: "John", location: {time: "20:00",city: "Boston",county:"USA"} },  
+    					{ last: "Resig", location: {state: "MA",county:"China"} } 
+    				);
+    	console.log(JSON.stringify(result));
+    	(function($){
+    		$.fn.extend({
+    			//插件名称paddingList
+    			paddingList: function(options){
+    				//参数和默认值
+    				var defaults = {
+    					animateRight: 500,
+    					animateLeft: 500,
+    					mouseOverColor: "#000000",
+    					mouseOutColor: "grey"
+    				};
+    				var options = $.extend(defaults, options);
+
+    				return this.each(function(){
+    					var o = options;
+    					var obj = $(this);
+
+                        var items = $(".jQuery", obj);
+    					
+                        items.hover(
+                            function(){
+                                $(this).css("color", o.mouseOverColor);
+                                $(this).animate({paddingLeft: o.animateRight}, 1000);
+                            },
+                            function() {
+                                $(this).animate({paddingLeft: 0}, 1000);
+                                $(this).css("color", o.mouseOutColor);
+                            }
+                        );
+    				});	
+    			}
+    		});
+    	})(jQuery);
+
+        $(function() {
+            $("#catagory").paddingList({animateRight: 100, mouseOverColor: "red"});
+
+            var test_trim = "   t e x  t   ";
+            //alert($.ltrim(test_trim));
+        });
+	</script>
+</head>
+<body>
+	<ul id="catagory">
+		<li>
+			<a class="jQuery" href="#">jQuery</a>
+		</li>
+		<li>
+			<a href="#">Asp.net</a>
+		</li>
+		<li>
+			<a href="#">Sql Server</a>
+		</li>
+		<li>
+			<a href="#">CSS</a>
+		</li>
+	</ul>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2014-01-14 15:58:51
+ * @version $Id$
+ */
+ body{
+ 	font-size: 14px;
+ 	font-family: "Microsoft YaHei";
+	margin: 0 0;
+	padding: 0 0;
+ }
+.links_list{
+	height: 54px;
+	width: 950px;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 15px 0;
+	position: relative;
+}
+ul{
+	list-style: none;
+	overflow: hidden;
+	height: 32px;
+	position: relative;
+	padding: 0 15px;
+}
+a.link_prev, a.link_next{
+	float: left;
+	width: 50px;
+	height: 54px;
+	overflow: hidden;
+	text-indent: -999em;
+	display: block;
+	cursor: pointer;
+	background: url(../html/img/links.png) -5px 0 no-repeat;
+	position: relative;
+}
+a.link_next{
+	float:right;
+	background: url(../html/img/links.png) -45px 0 no-repeat;
+}
+div.links{
+	float: left;
+	position: relative;
+	overflow: hidden;
+	width: 844px;
+	height: 54px;
+}
+ul li{
+	float: left;
+	width: 115px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+}
+.slideContainer{border: 1px solid red;}

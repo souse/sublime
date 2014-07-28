@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>C门户-订单模块</title>
+    <meta name="description" content="C门户默认尾演示">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/cashier.css"/>
+    <style type="text/css">
+		.cashier-payment .slyWrap{}
+		.cashier-payment .scrollbar{}
+		.cashier-payment .sly{width: 840px; overflow: hidden; position: relative;}
+    </style>
+    <script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="../js/iscroll.js"></script>
+</head>
+<body>
+	<div class="cashier-info">
+		<div class="cashier-main"><span class="cashier-logo"></span></div>
+
+		<!-- include cashierOrder page -->
+		<div class="order-info preferential orderset" id="preferential-info" style="margin-left: 200px;">
+			<span class="preferential-msg mptext">壹钱包优惠<span class="pic">∨</span></span>
+			<div class="money-info">
+				<strong class="yuan">50</strong>.<em class="fen">00<span class="yang">￥</span></em>
+			</div>
+		</div>
+
+
+
+		<div class="cashier-main">
+			<div class="title-info">
+				<h1>支付方式</h1>一<span>壹钱包支持组合支付</span>
+			</div>
+			<div class="cashier-payment">
+				<div class="slyWrap">
+					<div class="scrollbar">
+						<div class="handle" style="position: absolute; top: 0px; height: 10px;"></div>
+					</div>
+					<div class="sly" style="overflow: hidden;">
+						<ul>
+							<li class="modes active">
+								<div class="md-set">
+									<div class="lis">
+										<span class="mode">个人钱包</span>
+										<div class="money-info">
+											<strong class="yuans">150</strong>.<em class="fen">00<span class="yang">￥</span></em>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="modes">
+								<div class="md-set">
+									<div class="lis">
+										<span class="mode">积分</span>
+										<span class="jifen">1000</span>
+									</div>
+								</div>
+							</li>
+							<li class="modes">
+								<div class="md-set">
+									<div class="lis">
+										<span class="mode">健康卡</span>
+										<div class="money-info">
+											<strong class="yuans">500</strong>.<em class="fen">00<span class="yang">￥</span></em>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="modes">
+								<div class="md-set">
+									<div class="lis">
+										<span class="mode">活钱宝</span>
+										<div class="money-info">
+											<strong class="yuans">1150</strong>.<em class="fen">00<span class="yang">￥</span></em>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="modes">
+								<div class="md-set">
+									<div class="lis">
+										<span class="mode">借钱宝</span>
+										<div class="money-info">
+											<strong class="yuans">50</strong>.<em class="fen">00<span class="yang">￥</span></em>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="banks modes">
+								<div class="md-set">
+									<div class="lis">
+										<div class="bank-logo">logo</div>
+										<div>
+											<span class="bankname mode">平安银行</span>
+											<span class="cardtype">储蓄卡</span><span class="cardno">2345</span>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li class="addbankcard modes">
+								<div class="md-set">
+									<div class="add-card">
+										<div class="add-card-img"></div>
+										<span>添加银行卡</span>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="paymsg-info">
+				<div class="paykind">
+					<span class="paytype">个人钱包</span>
+					<div class="paymoney">
+						<div class="money-info">
+							<strong class="yuans big">-50</strong>.<em class="fen">00<span class="yang">￥</span></em>
+						</div>
+					</div>
+				</div>
+				<div class="paykind">
+					<span class="paytype">积分</span>
+					<div class="paymoney">
+						<span class="payjifen">-500</span>
+					</div>
+				</div>
+				<hr>
+				<div class="needpay">
+					<span class="paytype"></span>
+					<div class="paymoney needmoney">
+						<div class="money-info"><span class="need-text">还需</span>
+							<strong class="yuans big">-50</strong>.<em class="fen">00<span class="yang">￥</span></em>
+						</div>
+					</div>
+					<div class="chooseError">请选择其他支付方式</div>	
+				</div>	
+			</div>
+			<div class="psd-info">
+				<div class="pwd-text">
+					<span class="shu">|</span>
+					<span class="pwdline">输入支付密码</span>
+					<input type="password" class="disopacity newinput" id="password" name="password">
+				</div>
+				<div class="pwdError inline">
+					<span class="error-text">密码错误</span>
+				</div>
+				<a class="forgetpwd inline" href="#">忘记密码</a>
+			</div>
+		</div>
+		<div class="bt">
+			<div class="cashier-main bts">
+				<div class="btns-info">
+					<span class="btimg"></span>
+					<span class="bttext">确认支付</span>
+				</div>
+				<div class="goinet"><a class="" href="#">去网银&nbsp;&nbsp;&nbsp;></a></div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$('.newinput').on('focus', function(){
+			$('.pwdline').addClass('disopacity');
+			$(this).removeClass('disopacity');
+		}).on('blur', function(){
+			if(($(this).val()).trim() === ''){
+				$(this).addClass('disopacity');
+				$('.pwdline').removeClass('disopacity');
+			}
+		});
+	</script>
+</body>
+</html>

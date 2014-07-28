@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Examples</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="" rel="stylesheet">
+	<script type="text/javascript" src="../js/jquery-1.9.1.min.js"></script>
+	<style type="text/css">
+		.move{
+			top: 20px;
+			margin-top: 20px;
+			width: 100px;
+			height: 100px;
+			background-color: #e6e6e6;
+			position: relative;		
+		}
+		.div1{
+			top: 20px;
+			margin-top: 20px;
+			background-color: red; 
+			width: 100px; 
+			height: 100px;
+			position: relative;
+			/*position: absolute;*/
+		}
+		div.content{
+			margin-left: 500px;
+			position: relative;
+			overflow: hidden;
+			width: 380px;
+			height: 50px;
+			border: 1px solid;
+		}
+		div.content ul{
+			position: relative;
+			list-style: none;
+			overflow: hidden;
+		}
+		ul li{
+			float: left;
+			width: 51px;
+			height: 20px;
+			line-height: 20px;
+			text-align: center;
+			display: inline;
+			background-color: #ffa358;
+			margin-right: 20px;
+			border: 1px solid #666;
+		}
+		ul.ul-box{
+			/*border: 1px solid;*/
+			width: 1000px;
+			height: 22px;
+			margin-left: -96px;
+		}
+	</style>
+</head>
+<body>
+	<div><button class="pre">上一组</button></div>
+	<div class="content">
+		<ul class="ul-box">
+			<li><a href="http://www.baidu.com/" target="_bank">aaa</a></li>
+			<li>bbb</li>
+			<li>ccc</li>
+			<li>ddd</li>
+			<li>eee</li>
+			<li>fff</li>
+			<li>ggg</li>
+		</ul>
+	</div>
+	<div><button class="next">下一组</button></div>
+
+	<div class="move"></div>
+	<br><br>
+	<div class="redirect">
+		<button class="r">跳转</button>
+	</div>
+	<div style="border: 1px dashed">
+	<div class="div1"></div>
+	<div class="div2" style="background-color: blue; width: 100px; height: 100px; margin-left:100px;"></div>
+	</div>
+</body>
+<script type="text/javascript">
+	$(function(){
+		$(".redirect").on('click', function(){
+			window.open('http://localhost:8080/pinganfuweb/me?_at=00&accountType=RMB_ACCOUNT');
+			//window.open("http://www.baidu.com/");
+		});
+
+		var m = $(".move");
+		m.on('click',function(){
+			// $(this).animate({height: "400px"},1000);
+			// $(this).animate({left: "1000px"}, 1000);
+			$(this).animate({left: "+=50px"}, 3000);
+		});
+
+		//移动--------------------------------------------------------------------------------------
+		var $ul = $(".ul-box"),
+			c = 1,
+			stimer,
+			ms = 70 * c,
+			gameOver = true;
+			mountSize = $("ul").find("li").size() - 0;
+		//向左移动
+		$(".next").on("click", function() {
+			clearInterval(stimer);
+			if(gameOver){
+				gameOver = false;
+				clearInterval(stimer);
+				$ul.animate(
+					{left: "+="+ms},
+					500,
+					function () {
+						gameOver = true;
+						$ul.animate({left: "-="+ms},0);
+						var html = "";
+						$("ul").find('li:gt('+(mountSize-c-1)+')').each(function(){
+							html += "<li>"+$(this).html()+"</li>";
+						});
+						$("ul").find('li:gt('+(mountSize-c-1)+')').remove();
+						$("ul").html(html+$("ul").html());
+					}
+				);
+			}
+		});
+		//向右移动
+		$(".pre").on("click", function(){
+			clearInterval(stimer);
+			link_pre();
+		});
+		function link_pre () {
+			if(gameOver){
+				gameOver = false;
+				$ul.animate(
+					{left: "-="+ms},
+					500,
+					function () {
+						gameOver = true;
+						$ul.animate({left: "+="+ms},0);
+						$ul.find("li:lt("+c+")").clone().appendTo($ul);
+						$ul.find("li:lt("+c+")").remove();
+					}
+				);
+			}
+		}
+		//页面加载后自动move一下
+		/*moveFirst();
+		function moveFirst() {
+			$ul.find("li:lt("+c+")").clone().appendTo($ul);
+			$ul.find("li:lt("+c+")").remove();
+			$ul.css({"left": "-="+ms});
+		}*/
+		//自动的走动
+		setIntervalTime();
+		function setIntervalTime(){
+			clearInterval(stimer);
+			stimer = setInterval(function(){link_pre();},2000);
+		}
+
+		var  pn_over=false, dcontent_over=false;
+
+		$(".pre, .next").on({
+			'mouseover':function(){
+				pn_over = true;
+				clearInterval(stimer);
+			},
+			'mouseout':function(){
+				pn_over=false;
+				isGo();
+			}
+		});
+
+		$ul.on({
+			'mouseover':function(){
+				dcontent_over = true;
+				clearInterval(stimer);
+			},
+			'mouseout':function(){
+				dcontent_over=false;
+				isGo();
+			}
+		});
+
+		function isGo(){
+			var s = setTimeout(function(){
+				if(!pn_over && !dcontent_over){
+					setIntervalTime();
+				}
+			},1000);
+		}
+
+		//移动-------------------------------------------------------------------------------------
+	});
+</script>
+</html>

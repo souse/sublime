@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Examples</title>
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<link href="" rel="stylesheet">
+</head>
+<body>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/underscore.js"></script>
+    <script src="../js/backbone.js"></script>
+    <script>
+    	var model = Backbone.Model.extend({
+    		url: 'http://www.baidu.com/',
+    		defaults: {
+    			name:'张三',
+    			sex: '男',
+    			age: 24
+    		}
+    	});
+    </script>
+</body>
+</html>

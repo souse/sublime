@@ -1,0 +1,104 @@
+/* consumer.cashieroption style module */
+
+@charset "utf-8";
+
+*{margin: 0; padding: 0;}
+body{background-color: #fff; font: 14px/1.428571429 "Microsoft YaHei", SimSun, "Helvetica Neue", Helvetica, Arial, sans-serif; color: #666;}
+.cashier-main{width: 960px; margin: 0 auto;}
+.cashier-logo{background: url("./cashierlogo.png") no-repeat; width: 302px; height: 31px; margin-top: 15px; margin-bottom: 25px; display: block;}
+.cashier-main .title-info{margin-bottom: 10px;}
+.cashier-main .cashier-payment{margin-bottom: 0px;}
+.cashier-main .psd-info{margin-top: 5px;}
+.title-info h1{font-size: 20px; display: inline-block; margin: 0;}
+.title-info span{font-size: 14px;}
+.cashier-payment ul{margin: 0; padding: 0; border: 0; list-style: none; width: 960px; overflow: auto;}
+.cashier-payment li{float: left; width: 157px; height: 84px; margin: 0 11px 13px 0; padding: 0; cursor: pointer;}
+.cashier-payment .md-set{height: 82px; border: 1px solid #3ca3ea; color: #666;}
+.cashier-payment .active{background: #0087e3; color: #fff;}
+.cashier-payment .md-set:hover{border: 2px solid #0087e3;}
+.cashier-payment li .lis{margin-top: 15px; margin-left: 15px; font-size: 14px;}
+.cashier-payment .mode{display: block; margin-bottom: 5px; font-weight: bolder;}
+.cashier-payment .modes .jifen{font-size: 16px;}
+.cashier-payment .modes .cardtype{font-size: 12px;}
+.cashier-payment .modes .cardno{font-size: 12px; margin-left: 10px;}
+.cashier-payment li .heath-info{margin-top: 10px;}
+.cashier-payment li .add-card{width: 85px; height: 55px; margin: 20px auto;}
+.cashier-payment li .bank-logo{min-height: 35px; min-width: 35px; float: left; margin-right: 5px;}
+.cashier-payment li .heath-logo{margin-top: 15px; background: url("./cashierimg.png") no-repeat 0 -114px;}
+.cashier-payment li .pre-logo{margin-top: 15px; background: url("./cashierimg.png") no-repeat 0 -78px;}
+.cashier-payment li .bankicon{margin-top: 15px;}
+.cashier-payment li .add-card-img{width: 29px; height: 29px; background: url("./addbankcard.png") no-repeat; margin-left: 20px; margin-bottom: 5px;}
+
+.money-info{display: inline-block; min-width: 80px; position: relative;}
+.money-info .yuan{font-size: 20px;}
+.money-info .fen{font-size: 14px; position: absolute; font-style: normal;}
+
+
+
+.cashier-payment .dead-info{background-color: #afafaf; border: 1px solid #afafaf;}	
+
+.paymsg-info .paytype{font-size: 14px; display: inline-block; width: 100px; margin-right: 100px;}
+.paymsg-info .paymoney{display: inline-block; min-width: 100px; text-align: right;}
+.paymsg-info .hr{width: 340px; margin: 5px 0;}
+.paymsg-info .needpay{color: red;}
+.paymsg-info .need-text{font-size: 18px; margin-right: 5px;}
+
+.psd-info .pwd-text{width: 450px; overflow: auto; position: relative; height: 33px; line-height: 33px;}
+.psd-info input{position: absolute; top: 5px; left: 4px; height: 25px; line-height; width: 330px; outline: none; border-left: 0;
+				border-right: 0; border-top: 0; border-bottom: 1px solid #0087e3; padding-left: 5px;}
+
+.psd-info .pwdError{font-size: 12px; color: red; margin-left: 2px;}
+.psd-info a{font-size: 13px; margin-left: 5px; text-decoration: none;}
+.psd-info .pwdline{display: inline-block; font-size: 12px; color: #bfbfbf; width: 330px; height: 25px;
+					line-height: 25px; border-bottom: 1px solid #0087e3; margin-left: -4px; padding-left: 5px;}
+
+.cashier-info .bt{margin-top: 25px; height: 105px; background: #0087e3;}
+.bt .bts{padding-top: 23px; padding-left: 200px; width: 760px;}
+.bt .btns-info{width: 140px; height: 24px; padding: 8px 30px; border: 1px solid #fff; border-radius: 5px; cursor: pointer;}
+.bt .btns-info:hover{background: #007ed4;}
+.bt .btimg{margin-right: 30px; display: inline-block; width: 24px; height: 22px; background: url("./cashierimg.png") no-repeat 0 -52px;}
+.bt .bttext{color: #fff; font-size: 18px; float: right;}
+.bt .goinet{maring-top: 10px; float: right; font-size: 14px; margin-right: 17px;}
+.bt a{text-decoration: none; color: #fff;}
+
+.money-info .yuans{font-size: 18px; font-weight:normal;}
+.paymsg-info .payjifen, .paymsg-info .big{font-size: 20px;}
+
+a:hover{text-decoration: underline;}
+.disopacity{opacity: 0; filter: alpha(opacity=0);}
+.inline{display: inline-block;}
+.shu{color: #0087e3;}
+.chooseError{font-size: 14px; color: red; display: inline-block; margin-left: 100px; height: 20px;}
+label{line-height: 26px;}
+.container {margin-left: auto; margin-right: auto; width: 950px;}
+.errorLayout{width: 450px; margin: -130px 0 0 -230px; border: 1px solid #ededed; padding: 20px; position: absolute; left: 50%; top: 50%; z-index: 200; background: #fff;}
+.errorLayout .choose-bank-error-textset {width: 235px; margin: 0 auto; text-align: left;}
+.errorLayout #choosepayinfo{font-size: 20px; color: #0087e3;}
+.errorLayout .poppuBt{background: url("./cashierimg.png") no-repeat -40px -30px; width: 45px; height: 20px; margin: 20px auto 0 auto; cursor: pointer;}
+
+.cashier-validate-info{width: 280px; margin: 5px auto 0 auto;}
+.cashier-validate-info .validateConfirmDis{background: url("./cashierimg.png") no-repeat -90px -0px; width: 190px; height: 45px; margin-top: 20px; cursor: pointer;}
+.cashier-validate-info .validateConfirmDis:hover{background: url("./cashierimg.png") no-repeat -90px -0px; width: 190px; height: 45px; margin-top: 20px; cursor: pointer;}
+.cashier-validate-info .validateConfirm{background: url("./cashierimg.png") no-repeat -90px -101px; width: 190px; height: 45px; margin-top: 30px; cursor: pointer;}
+.cashier-validate-info .validateConfirm:hover{background: url("./cashierimg.png") no-repeat -90px -50px; width: 190px; height: 45px; margin-top: 30px; cursor: pointer;}
+.error-block{color: red;}
+.form-line{font-size: 14px; position: relative; margin-bottom: 20px; padding: 0;}
+.form-line .from-info{position: absolute; top: 0; left: 0; height: 25px; line-height: 25px; width: 195px; border-bottom: 1px solid #0087e3; padding-left: 5px}
+.form-line .show-hide{opacity: 0; filter: alpha(opacity=0);}
+.form-line .simulation-info{display: inline-block; width: 195px; height: 25px; line-height: 25px; color: #ccc; padding-left: 5px;}
+.form-line .form-text{outline: none; border: 0; width: 180px; margin-top: 5px;}
+.form-line .remark-text{margin-left: 5px;}
+.form-line .error-block{margin-top: 5px; color: red;}
+.form-line .mcolor{color: #0087e3;}
+.form-line .validate-second{font-size: 16px; color: #0087e3; margin-left: 5px; vertical-align: bottom;}
+.form-line a{color: #0087e3; font-size: 14px; margin-left: 5px; vertical-align: bottom; text-decoration: none;}
+.form-line a:hover{text-decoration: underline;}
+.form-line .sendOpt{font-size: 14px; color: #0087e3; margin-left: 5px; vertical-align: bottom; cursor: pointer;}
+.hidden{display: none;}
+.btn-primary:hover{color: #ffffff; background-color: #ffa358; border-color: #ffa358;}
+.btn-primary{color: #ffffff; background-color: #ff9138; border-color: #ff9138;}
+.btn{display: inline-block; padding: 7px 12px; margin-bottom: 0; font-size: 14px; line-height: 1.428571429; font-family: "Microsoft YaHei"; text-align: center; white-space: nowrap;
+	vertical-align: middle; cursor: pointer; border: none 0; min-width: 105px;}
+.errors{margin-bottom: 20px; text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5); background-color: #fcf8e3; border: 1px solid #fbeed5; -webkit-border-radius: 4px; -moz-border-radius: 4px;
+		border-radius: 4px; width: 200px; color: red; height: 30px; line-height: 30px; padding-left: 5px;}
+.install-grd{padding-top: 3px; background-color: #fff;}

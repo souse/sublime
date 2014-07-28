@@ -1,0 +1,1 @@
+module.exports = function(form, options) {if (typeof form === "string") {form = $(form);}return new Validator(form, options);};

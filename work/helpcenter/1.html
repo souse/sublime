@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+.main{width: 950px; margin: 0 auto; overflow: hidden; margin-bottom: 30px;}
+.title{height: 45px; line-height: 45px; padding-left: 20px; background-color: #f0efef; margin-bottom: 20px;}
+.title h1{font-size: 1.6em; color: #464646; line-height: 45px;}
+.content{margin: 0 auto; border: 1px solid #ededed; font-size: 14px; overflow: auto;}
+.content .questions{float: left; margin: 0 0; padding: 0 0;width: 244px;}
+.content .answers{border-left: 1px solid #ededed; float: right; width: 702px; padding-bottom: 40px;}
+.questions .phone{margin-top: 20px; text-align: right; padding-right: 20px; color: #ff9138;}
+.questions ul{list-style-type: none; padding: 0; margin: 0;}
+.questions li{width: 224px; height: 40px; line-height: 40px; border-bottom: 1px solid #ededed; padding-left: 20px; background-color: #fcfcfc; cursor: pointer;}
+.questions li .sp2{float: right; padding-right: 20px;}
+.questions li.curr, .questions li:hover{background-color: #ff9138; color: #fff;}
+.answers .quest-title{margin-bottom: 15px; margin-top: 15px; margin-left: 38px; background: url('./help-center.png') no-repeat 0 1px; padding-left: 25px;height: 21px; line-height: 21px;}
+.answers .quest-title h2{font-size: 1.4em; color: #ff9138;}
+.answers .answers-text{margin-left: 45px; margin-right: 40px; border-bottom: 1px dashed #ededed; padding-bottom: 20px; margin-bottom: 20px;}
+.answers-text .quest-text{line-height: 30px; font-size: 14px; font-weight: bold; color: #666;}
+.answers-text p{line-height: 20px; padding-left: 19px; font-size: 12px; color: #999999;}
+
+
+
+
+.answers .setpng{margin-left: 19px;}
+.answers .can_window1{width: 560px; height: 160px; background: url('./can_window1.png') top left no-repeat;}
+.answers .can_window2{width: 390px; height: 155px; background: url('./can_window2.png') top left no-repeat;}
+.answers .can_mac{width: 390px; height: 115px; background: url('./can_mac.png') top left no-repeat;}
+.answers .atl1{width: 355px; height: 205px; background: url('./atl1.png') top left no-repeat;}
+.answers .atl2{width: 545px; height: 330px; background: url('./atl2.png') top left no-repeat;}
+.answers .saf{width: 355px; height: 415px; background: url('./saf.png') top left no-repeat;}
+
+
+</style>
+</head>
+<body>
+	<div class="main">
+		<div class="title"><h1>帮助中心</h1></div>
+		<div class="content">
+			<div class="questions">
+				<ul>
+					<li id="htQ"><span class="sp1">热门问题</span><span class="sp2">&gt;</span></li>
+					<li id="registerQ"><span class="sp1">登录注册</span><span class="sp2">&gt;</span></li>
+					<li id="passwordQ"><span class="sp1">密码问题</span><span class="sp2">&gt;</span></li>
+					<li id="assetQ"><span class="sp1">资产问题</span><span class="sp2">&gt;</span></li>
+					<li id="payQ"><span class="sp1">支付问题</span><span class="sp2">&gt;</span></li>
+					<li id="safeQ"><span class="sp1">安全保障问题</span><span class="sp2">&gt;</span></li>
+					<li id="integralQ"><span class="sp1">积分问题</span><span class="sp2">&gt;</span></li>
+					<li id="hqbaoQ"><span class="sp1">活钱宝问题</span><span class="sp2">&gt;</span></li>
+					<li id="jqbaoQ"><span class="sp1">借钱宝问题</span><span class="sp2">&gt;</span></li>
+					<li id="safewidgetQ" class="curr"><span class="sp1">安全控件问题</span><span class="sp2">&gt;</span></li>
+					<li id="otherQ"><span class="sp1">其他问题</span><span class="sp2">&gt;</span></li>
+				</ul>
+				<div class="phone">
+					客服电话: 400-888-0999<br>
+					08:00 - 22:00
+				</div>
+			</div>
+			<div class="answers" id="answers">
+				<div class="quest-title">
+					<h2 id="qTitle">安全控件问题</h2>
+				</div>
+				<div class="answers-text">
+					<h3 class="quest-text">Q. 什么是WEB安全控件，使用安全控件有什么好处？</h3>
+					<div class="ans-text">
+						<p>为了提升壹钱包账户的安全性，防止账户密码被木马程序或病毒窃取，壹钱包安全控件，该安全控件实现了在SSL加密传输基础上对用户的关键信息进行再次的多重加密，能够有效防止木马程序截取键盘记录，保护用户登录密码和支付密码。壹钱包控件目前仅支持简体中文版显示。</p>
+					</div>
+				</div>
+				<div class="answers-text">
+					<h3 class="quest-text">Q. 安全控件支持哪些操作系统和浏览器？</h3>
+					<div class="ans-text">
+						<p>安全控件支持的操作系统和浏览器如下：</p>
+						<p>Windows系统</p>
+						<div class="can_window1 setpng"></div>
+						<div class="can_window2 setpng"></div>
+						<p>苹果MAC系统</p>
+						<div class="can_mac setpng"></div>
+					</div>
+				</div>
+				<div class="answers-text">
+					<h3 class="quest-text">Q. 安装安全控件后，在登录密码或支付密码输入框内显示“ATL 10.00”，是什么原因，如何处理？</h3>
+					<div class="ans-text">
+						<div class="atl1 setpng"></div>
+						<p>安装控件后，密码框显示ATL10.00，无法成功点进密码框，进而导致无法输入密码的问题，请使用如下方法解决：打开IE浏览器，选择菜单栏工具下的internet选项，在常规选项卡中选择浏览历史记录下的“删除”按钮，在弹出的复选框中按照默认进行勾选，然后点击删除。</p>
+						<div class="atl2 setpng"></div>
+						<p>关闭IE浏览器，重新启动浏览器，进入输入密码页面，尝试问题是否已解决。</p>
+					</div>
+				</div>
+				<div class="answers-text">
+					<h3 class="quest-text">Q. 我进入网银登录页面时，有黄条提示：“您的安全设置不允许网站使	用安装在您的计算机上的Activex控件”，怎么办？</h3>
+					<div class="ans-text">
+						<p>出现这种情况，有可能跟您的IE设置有关系，用户可以尝试使用以下方法解决：IE菜单栏中的工具->internet选项->安全选项卡->自定义级别->安全设置中，将“下载已签名的ActiveX控件”选项改为启用或者提示，点击确定重启浏览器即可。如下图所示：</p>
+						<div class="saf setpng"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
