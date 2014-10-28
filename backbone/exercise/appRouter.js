@@ -1,5 +1,5 @@
-define(['jquery', 'underscore', 'backbone', 'appView', 'persons'],
-		function($, _, Backbone, AppView, Persons) {
+define(['jquery', 'underscore', 'backbone', 'appView', 'persons', 'mainView'],
+		function($, _, Backbone, AppView, Persons, MainView) {
 	return Backbone.Router.extend({
 		routes: {
 			'detail/:id': 'showDetail',
@@ -10,11 +10,8 @@ define(['jquery', 'underscore', 'backbone', 'appView', 'persons'],
 			self.appView = new AppView({model: persons});
 		},
 		showDetail: function(id) {
-			if(id) {
-
-			} else {
-
-			}
+			var self = this;
+			self.mainView = new MainView({seachId: id});
 		}
 	});
 });

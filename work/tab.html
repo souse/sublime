@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>TAB切换</title>
+	<style>
+		.main-bao{border: 1px solid #ededed; position: relative; padding: 0px; margin: 0px; font-size: 14px; }
+		.main-bao .tab{}
+		.main-bao ul{list-style-type: none; margin: 0px; padding: 0px; line-height: 35px; height: 35px; border-bottom: 1px solid #ededed; margin-bottom: 10px;}
+		.main-bao ul li{float: left; margin-left: 75px; margin-top: 5px; position: relative; width: 70px; text-align: center;}
+		.main-bao li.active{}
+		.main-bao li span{}
+		.main-bao .active i.icon{position: absolute; width: 70px; border: 1px solid red; top: 29px; right: 0px;}
+		.main-bao .tab-info{clear: both; padding-bottom: 10px;}
+		.main-bao .bao-info.none{display: none;}
+	</style>
+</head>
+<body>
+	<div class="main-bao">
+		<div class="tab">
+			<ul>
+				<li id="hqbao" class="active">
+					<a href="#">活钱宝</a>
+					<i class="icon"></i>
+				</li>
+				<li id="jqbao" class="">
+					<a href="#">借钱宝</a>
+					<i class="icon"></i>
+				</li>
+			</ul>
+		</div>
+		<div class="tab-info">
+			<div id="hqbao-info" class="bao-info">
+				这是活钱宝模块的内容
+			</div>
+			<div id="jqbao-info" class="bao-info none">
+				这是借钱宝模块的内容
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+	<script>
+		$(function() {
+			var $mLis = $('.main-bao li');
+			$mLis.on('click', function() {
+				var $this = $(this),
+					thisId = $this.attr('id'), thisClass = $this.attr('class'),
+					hasActive = (thisClass.indexOf('active') > 0) ? true : false;
+
+				//一系列的数据处理
+
+				if(!hasActive) {
+					$this.addClass('active').siblings().removeClass('active');
+					$('#' + thisId + '-info').removeClass('none').siblings().addClass('none');
+				}
+			});
+		});
+	</script>
+</body>
+</html>

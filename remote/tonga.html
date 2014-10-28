@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>A</title>
+</head>
+<body>
+    <textarea id="message">这是高层的密码！</textarea><br/>
+    <button id="test">看看员工在说什么</button><br/><br/><br/>
+    员工们：<br/>
+    <iframe src="tongb.html" width="500" height="300" id="iframe" name="iframe"></iframe>
+    <script>
+    	document.getElementById("test").onclick = function(){
+    		alert(document.getElementById("iframe").contentWindow.document.getElementById("message").value);
+    	}
+    </script>
+</body>
+</html>

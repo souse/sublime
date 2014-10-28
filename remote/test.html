@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>jsonp跨域</title>
+	<script type="text/javascript" src="../js/jquery.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		/**
+			动态创建script
+		*/
+    	var flightHandler = function(data){
+        	alert('你查询的航班结果是：票价 ' + data.price + ' 元,' + '余票 ' + data.tickets + ' 张.');
+    	};
+
+    	var url = 'http://localhost:8888/sublime/remote/remote.js?code=CA1998&callback=flightHandler';
+    	var script = document.createElement('script');
+    	script.setAttribute('type', 'text/javascript');
+    	script.setAttribute('src', url);
+    	document.getElementsByTagName('head')[0].appendChild(script);
+    	/**
+			remote.js 的内容
+			flightHandler({
+			    "code": "CA1998",
+			    "price": 1780,
+			    "tickets": 5
+			});
+    	*/
+	</script>
+    <script type="text/javascript">
+    	$.ajax({
+    		url: 'http://localhost:8888/sublime/remote/remote.json',
+    		type: 'GET',
+    		dataType: 'JSONP',
+    		jsonp: 'callback',
+    		jsonpCallback: 'callbackFn',
+    		data: {}
+    	})
+    	.done(function(data) {
+    		alert('你查询的航班结果是：票价 ' + data.price + ' 元,' + '余票 ' + data.tickets + ' 张.');
+    		console.log("success");
+    	})
+    	.fail(function() {
+    		console.log("error");
+    	})
+    	.always(function() {
+    		console.log("complete");
+    	});
+    	/**
+			remote.json的内容
+
+			callbackFn(
+				{
+				    "code": "CA1998",
+				    "price": "1780",
+				    "tickets": "5"
+				}
+			)
+    	*/
+    </script>
+</body>
+</html>

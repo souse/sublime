@@ -13,10 +13,23 @@ define(['jquery', 'underscore', 'backbone', 'person', 'mainView'],
 		},
 		render: function() {
 			$('body').find('div.appMain').append(this.template);
+			window.PersonDB.executeSqlDefault('select * from person', [], this.showDB, function(){console.log('error')});
 		},
-		showAddPerson: function() {
-			var self = this;
-			//self.mainView = new MainView();
+		showAddPerson: function(e) {
+			var self = this, id = $(e.currentTarget).data('id');
+			if(id) {
+				Backbone.history.navigate('detail/'+ id, {trigger: true});
+			} else {
+				Backbone.history.navigate('add', {trigger: true});
+			}
+		},
+		showDB: function(tx, rs) {
+			var htm = '';
+			for(var i = 0; i < rs.rows.length; i++) {
+				var obj = rs.rows.item(i);
+				htm += '<div class="friends" data-id="'+obj.id+'"><span>'+obj.name+'</span></div>';
+			}
+			$('.names-info').append(htm);
 		}
 	});
 });

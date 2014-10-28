@@ -22,8 +22,8 @@ define(['jquery', 'underscore', 'backbone', 'appRouter', 'db'],
 			/**
 				window.PersonDB.executeSqlDefault('select * from person', [], function(tx, rs){console.log(rs.rows.length)}, function(){console.log('error')});
 
-				window.PersonDB.executeSqlDefault('insert into person values(1,"王五", "男", "1234@qq.com")', [], function(){console.log('success')}, function(){console.log('error')});
-			/
+			window.PersonDB.executeSqlDefault('insert into person values(1,"王五", "男", "1234@qq.com")', [], function(){console.log('success')}, function(){console.log('error')});
+			*/
 		}
 	};
 });

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<script>
+		window.onload = function() {
+			var ifr = document.getElementById('ifr');
+			var targetOrigin = 'http://localhost:8080/static/test/bb.html';  // 若写成'http://b.com/c/proxy.html'效果一样
+            									// 若写成'http://c.com'就不会执行postMessage了
+			ifr.contentWindow.postMessage('I was there!', targetOrigin);
+		}
+	</script>
+</body>
+</html>

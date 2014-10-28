@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Examples</title>
+	<style>
+		.ajax{
+
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="ajax"></div>
+	</div>
+	<script src="../js/jquery.js"></script>
+	<script>
+		//setTimeout(getAjax(), 3000)
+		$(function() {
+			$(document).ajaxStart(function() {
+				document.write('ajaxStart......<br>');
+			});
+			$(document).ajaxComplete(function(event, xhr, settings) {
+				document.write('ajaxComplete......<br>');
+			});
+			$.ajax({
+				type: 'GET',
+				dataType: 'JSON',
+				url: './ajax.json'
+			})
+			.done(function() {
+				document.write('ajax done......<br>');
+				for(var i = 0; i <= 100000; i++){
+					console.log(i + "<br>");
+				}
+			})
+			.fail(function() {
+				document.write('ajax fail......');
+			});
+		});
+	</script>
+</body>
+</html>

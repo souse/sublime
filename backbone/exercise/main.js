@@ -3,6 +3,7 @@ require.config({
 		jquery : '../../js/jquery',
 		underscore : '../../js/underscore',
 		backbone : '../../js/backbone',
+		text: '../../js/text',
 		app : 'app'
 	},
 	shim : {
